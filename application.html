@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn DM Automator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/favicon.ico"> <!-- Optional: Add a favicon -->
+</head>
+<body class="toolpage">
+    
+
+    <main>
+        <section>
+            <div class="maincontent">
+            <div class="leftdiv">
+                <img class="toollogo" src="/images/">
+                <div>
+                    <img class="userpic" src="/images/">
+                    <span class="usernameleft">Toon Achiel Apers</span><br/>
+                    <span class="profileemblem">Free plan</span>
+                </div>
+                <div class="buttonstopleft">
+                <div class="buttondiv logoutbuttondiv"><a href="/application.html" class=" btn logoutbtn">Logout</a></div>
+                <div class="buttondiv"><a href="/application.html" class="buttontopleft buttonhome "><img class="menuimg" src="/images/"> Funnelin</a></div>
+                <div class="buttondiv"><a href="/application.html" class="buttontopleft  "><img class="menuimg" src="/images/"> Automations</a></div>
+                <div class="buttondiv"><a href="/application.html" class="buttontopleft  "><img class="menuimg" src="/images/"> Subscription</a></div>
+            </div>
+                <div class="leftdivbottom">
+                    <a href="/application.html" class="buttontopleft btn settingsbtn"><img class="menuimg menuimgbottom" src="/images/"> Settings</a><br/>
+                    <a href="/application.html" class="buttontopleft btn logoutbtnbottom"><img class="menuimg menuimgbottom" src="/images/"> Log out</a>
+                </div>
+            </div>
+            <div class="rightdiv">
+                <div class="righttopdiv">
+                    <h1 class="titleright">Welcome back, <span class="username">Toon</span>!</h1>
+                    <p class="paragraphright">"Funneling ideas into a coherent plan creates breakthrough opportunities."</p>
+                </div>
+                <div class="gradientimage"><img src="/images/backgroundgradient.png" class="backgroundgradientimg"/></div>
+                <div class="rightundertop">
+                <div class="rightleftdiv">
+                    <p class="divtitle divtitleee">Select a post</p>
+                    <div class="postlist">
+                        <div class="postlistitem">
+                        <div><img class="postlistimg"/></div>
+                        <div><p class="firsttextpost">20 Things People Realise Too Late in Life. Don't wait until regret hits you.</p><span class="timeframespan">20h ago</span>
+                        </div>
+                        </div>
+                        <div class="postlistitem">
+                        <div><img class="postlistimg"/></div>
+                        <div><p class="firsttextpost">Be teachable, you're not always right.</p><span class="timeframespan">20h ago</span>
+                        </div>
+                        </div>
+                        <div class="postlistitem">
+                        <div><img class="postlistimg"/></div>
+                        <div><p class="firsttextpost">Power isn't about being loud. Knowing when to be quiet is</p><span class="timeframespan">20h ago</span>
+                        </div>
+                        </div>
+                        <div class="postlistitem">
+                        <div><img class="postlistimg"/></div>
+                        <div><p class="firsttextpost">Don't stay where you are not fulfilled. (Heres the hard truth)</p><span class="timeframespan">20h ago</span>
+                        </div>
+                        </div>
+                        <div class="postlistitem">
+                        <div><img class="postlistimg"/></div>
+                        <div><p class="firsttextpost">20 Things People Realise Too Late in Life. Don't wait until regret hits you 20 Things People Realise Too Late in Life. Don't wait until regret hits you 20 Things People Realise Too Late in Life. Don't wait until regret hits you</p><span class="timeframespan">20h ago</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rightrightdiv">
+                    <p class="divtitle selectedpostt divtitleee">Selected post</p>
+                    <div class="previewselectedpost">
+                        <div class="postlistitem postlistitemselected">
+                        <div><img class="postpreviewimg"/></div>
+                        <div><p class="firsttextpost previewtextpost">20 Things People Realise Too Late in Life. Don't...</p><span class="timeframespan timeframespanpreview">20h ago</span>
+                        </div>
+                        </div>
+                    </div>
+                    <p class="paragraphmarginright divtitleee">Trigger words</p>
+                    
+                        <div class="rightsideinsert trigger-container" id="triggerContainer">
+                            <textarea id="hiddenTextarea" class="hidden-textarea"></textarea>
+                            <input type="text" id="triggerInput" class="trigger-input" placeholder="Word1, word2, word3...">
+                        </div>
+                    
+                    <p class="paragraphmarginright divtitleee">DM Template</p>
+                    <div class="rightsideinsert">
+                        <textarea class="dmtemplateinsert">Your message...</textarea>
+                    </div>
+                    <p class="paragraphmarginright triggeractive divtitleee">Active</p>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider">
+                            <svg class="check-icon" viewBox="0 0 24 24">
+                                <path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const postItems = document.querySelectorAll(".postlistitem");
+                const previewImage = document.querySelector(".postpreviewimg");
+                const previewText = document.querySelector(".previewtextpost");
+                const previewTime = document.querySelector(".timeframespanpreview");
+            
+                postItems.forEach(item => {
+                    item.addEventListener("click", function () {
+                        document.querySelectorAll(".postlistitem").forEach(el => el.classList.remove("selected"));
+                        this.classList.add("selected");
+            
+                        const imgSrc = this.querySelector(".postlistimg").src;
+                        const text = this.querySelector(".firsttextpost").innerHTML;
+                        previewImage.src = imgSrc;
+                        previewText.innerHTML = text;
+                    });
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function () {
+    const triggerContainer = document.getElementById("triggerContainer");
+    const triggerInput = document.getElementById("triggerInput");
+    const hiddenTextarea = document.getElementById("hiddenTextarea");
+    let lastSelectedTag = null;
+
+    triggerInput.addEventListener("focus", function () {
+        this.placeholder = "";
+    });
+
+    triggerInput.addEventListener("blur", function () {
+        if (!triggerContainer.querySelector(".trigger-tag")) {
+            this.placeholder = "Word1, word2, word3";
+        }
+    });
+
+    triggerInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === ",") {
+            event.preventDefault();
+            addTriggerWord(this.value.trim());
+            this.value = "";
+            lastSelectedTag = null;
+        }
+
+        if (event.key === "Backspace") {
+            handleBackspace();
+        }
+    });
+
+    function addTriggerWord(word) {
+        if (word === "") return;
+
+        const tag = document.createElement("div");
+        tag.classList.add("trigger-tag");
+        tag.innerHTML = `${word} <span>&times;</span>`;
+
+        tag.querySelector("span").addEventListener("click", function () {
+            tag.remove();
+            updateHiddenTextarea();
+        });
+
+        triggerContainer.insertBefore(tag, triggerInput);
+        updateHiddenTextarea();
+    }
+
+    function handleBackspace() {
+        const tags = triggerContainer.querySelectorAll(".trigger-tag");
+        
+        if (triggerInput.value === "" && tags.length > 0) {
+            if (!lastSelectedTag) {
+                lastSelectedTag = tags[tags.length - 1];
+                lastSelectedTag.classList.add("selected");
+            } else {
+                lastSelectedTag.remove();
+                lastSelectedTag = null;
+                updateHiddenTextarea();
+            }
+        }
+    }
+
+    function updateHiddenTextarea() {
+        const words = Array.from(triggerContainer.querySelectorAll(".trigger-tag"))
+            .map(tag => tag.textContent.replace(" ×", ""))
+            .join(", ");
+        hiddenTextarea.value = words;
+    }
+});
+            </script>
+
+
+        <section class="bigtoolbox">
+            <div class="profilepicture"></div>
+            <h2>Toon Achiel Apers</h2>
+            <p>Deliver messages and connect with potential leads on autopilot.</p>
+            <a href="/login" class="btn">Logout from Nobledin</a>
+            <div class="importantdiv">
+                <h2 class="automationtitle">My Automation #1</h2>  <!-- <span class="return">return</span> -->
+            <div class="threecolumns">
+                <div class="column">
+                    <h3>Select a post</h3>
+                    <div class="contentcolumn"></div>
+                    <a href="/" class="btn savebtn">Save</a>
+                </div>
+                <div class="column">
+                    <h3>Trigger words</h3>
+                    <input type="text" class="input textdm">
+                    <a href="/" class="btn savebtn">Add</a>
+                </div>
+                <div class="column">
+                    <h3>DM Templates</h3>
+                    <textarea type="text" class="input textdm"></textarea>
+                    <a href="/" class="btn savebtn">Add</a>
+                </div>
+            </div>
+            </div>
+        </section>
+        
+    </main>
+
+    
+</body>
+</html>
