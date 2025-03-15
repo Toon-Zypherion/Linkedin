@@ -189,6 +189,34 @@
         hiddenTextarea.value = words;
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    async function getUserData() {
+        const response = await fetch('/get-user');
+        const data = await response.json();
+        if (data.user) {
+            document.querySelector(".username").textContent = data.user.name;
+        } else {
+            window.location.href = "/index.html"; // Redirect naar loginpagina als niet ingelogd
+        }
+    }
+    getUserData();
+
+    document.querySelector(".logoutbtn").addEventListener("click", async function () {
+        await fetch('/logout');
+        window.location.href = "/index.html"; 
+    });
+
+    document.querySelector(".savebtn").addEventListener("click", async function () {
+        const triggerWords = document.getElementById("triggerInput").value.split(",");
+        await fetch('/set-triggers', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ triggers: triggerWords })
+        });
+    });
+});
             </script>
 
 
